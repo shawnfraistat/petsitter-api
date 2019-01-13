@@ -15,14 +15,11 @@ class SittersController < ProtectedController
 
   # POST /sitters
   def create
-    puts 'current_user is'
-    puts current_user
-
     @sitter = Sitter.new(sitter_params)
     @sitter.user_id = current_user.id
 
     if @sitter.save
-      render json: @sitter, status: :created, location: @sitter
+      render json: @sitter, serializer: SitterSerializer
     else
       render json: @sitter.errors, status: :unprocessable_entity
     end

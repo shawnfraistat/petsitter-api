@@ -20,10 +20,11 @@ class ClientsController < ProtectedController
 
     @client = Client.new(client_params)
     @client.user_id = current_user.id
-    # Client.new(client_params)
 
+    puts '@client is'
+    puts @client
     if @client.save
-      render json: @client, status: :created
+      render json: @client
     else
       render json: @client.errors, status: :unprocessable_entity
     end

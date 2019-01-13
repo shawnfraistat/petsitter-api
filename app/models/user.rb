@@ -3,6 +3,6 @@
 class User < ApplicationRecord
   include Authentication
   has_many :examples
-  has_one :client
-  has_one :sitter
+  has_one :client, dependent: :destroy
+  has_one :sitter, dependent: :destroy
 end
