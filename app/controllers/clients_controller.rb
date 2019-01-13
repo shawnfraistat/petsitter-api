@@ -17,6 +17,7 @@ class ClientsController < ProtectedController
   def create
     puts 'current_user is'
     puts current_user
+
     @client = Client.new(client_params)
     @client.user_id = current_user.id
     # Client.new(client_params)
