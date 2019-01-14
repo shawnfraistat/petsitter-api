@@ -28,7 +28,8 @@ class SittersController < ProtectedController
   # PATCH/PUT /sitters/1
   def update
     if @sitter.update(sitter_params)
-      render json: @sitter
+      user = User.find(@sitter.user_id)
+      render json: user
     else
       render json: @sitter.errors, status: :unprocessable_entity
     end

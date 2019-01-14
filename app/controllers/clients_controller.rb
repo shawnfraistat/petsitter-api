@@ -33,7 +33,8 @@ class ClientsController < ProtectedController
   # PATCH/PUT /clients/1
   def update
     if @client.update(client_params)
-      render json: @client
+      user = User.find(@client.user_id)
+      render json: user
     else
       render json: @client.errors, status: :unprocessable_entity
     end

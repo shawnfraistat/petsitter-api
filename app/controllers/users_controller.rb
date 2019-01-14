@@ -46,11 +46,26 @@ class UsersController < ProtectedController
     end
   end
 
+  def edit_profile
+    current_user.update(user_update)
+
+    if current_user.save
+      render json: current_user, include: '*.*'
+    else
+      render json: user.errors, status: :bad_request
+    end
+  end
+
   private
 
   def user_creds
     params.require(:credentials)
-          .permit(:email, :password, :password_confirmation, :about, :name, :zip_code)
+          .permit(:email, :password, :password_confirmation, :name, :zip_code, :pic_url)
+  end
+
+  def user_update
+    params.require(:data)
+          .permit(:email, :password, :password_confirmation, :name, :zip_code, :pic_url)
   end
 
   def pw_creds
