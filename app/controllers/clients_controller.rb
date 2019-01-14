@@ -15,14 +15,9 @@ class ClientsController < ProtectedController
 
   # POST /clients
   def create
-    puts 'current_user is'
-    puts current_user
-
     @client = Client.new(client_params)
     @client.user_id = current_user.id
 
-    puts '@client is'
-    puts @client
     if @client.save
       render json: @client
     else
@@ -48,12 +43,12 @@ class ClientsController < ProtectedController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_client
-      @client = current_user.examples.find(params[:id])
+      @client = Client.find(params[:id])
       # @client = Client.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def client_params
-      params.require(:client).permit(:about, :pic_url, :user_id)
+      params.require(:client).permit(:about, :user_id)
     end
 end
