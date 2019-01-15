@@ -49,6 +49,6 @@ class ClientsController < ProtectedController
 
     # Only allow a trusted parameter "white list" through.
     def client_params
-      params.require(:client).permit(:about, :user_id)
+      params.require(:client).permit(:about, :user_id, :favorites)
     end
 end

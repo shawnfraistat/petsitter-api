@@ -1,4 +1,5 @@
 class ClientSerializer < ActiveModel::Serializer
   attributes :id, :about
-  has_one :user
+  belongs_to :user
+  # has_many :favorites
 end
