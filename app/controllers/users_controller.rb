@@ -51,7 +51,7 @@ class UsersController < ProtectedController
   end
 
   def edit_profile
-    current_user.update(user_update)
+    current_user.update(user_creds)
 
     if current_user.save
       render json: current_user, include: '*.*'
