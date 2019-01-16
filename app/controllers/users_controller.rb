@@ -2,6 +2,10 @@
 
 class UsersController < ProtectedController
   skip_before_action :authenticate, only: %i[signup signin]
+  # mount_uploader :image, ImageUploader
+
+  def api_request_settings
+  end
 
   # POST '/sign-up'
   def signup
@@ -15,7 +19,7 @@ class UsersController < ProtectedController
 
   # POST '/sign-in'
   def signin
-    creds = user_creds
+    creds = sign_in_creds
     if (user = User.authenticate creds[:email],
                                  creds[:password])
       render json: user, serializer: UserLoginSerializer, root: 'user', include: '*.*'
@@ -59,13 +63,17 @@ class UsersController < ProtectedController
   private
 
   def user_creds
+    params.permit(:credentials, :email, :password, :password_confirmation, :name, :zip_code, :pic_url, :image)
+  end
+
+  def sign_in_creds
     params.require(:credentials)
-          .permit(:email, :password, :password_confirmation, :name, :zip_code, :pic_url)
+          .permit(:credentials, :email, :password, :password_confirmation, :name, :zip_code, :pic_url, :image)
   end
 
   def user_update
     params.require(:data)
-          .permit(:email, :password, :password_confirmation, :name, :zip_code, :pic_url)
+          .permit(:email, :password, :password_confirmation, :name, :zip_code, :pic_url, :image)
   end
 
   def pw_creds
