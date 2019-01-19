@@ -40,6 +40,67 @@ Install dependencies for the front-end repo by using ```npm install``` in whatev
 Install dependencies for the back-end repo by using ```bundle install``` in
 whatever folder you have cloned it into. Run it with ```rails server```.
 
+
+### API Info ###
+
+*USER Routes*
+
+(1) ```POST /signup```
+
+Used to create a new user account. Expects a request body that is a FormData object, with ```email```, ```password```, ```password_confirmation```, and ```zip_code``` as required entries and ```image``` as an optional one.
+
+(2) ```POST /signin```
+
+Used to sign into an existing account. Expects a request body of the form ```{ credentials: { email: <valid email>, password: <string> }```.
+
+(3) ```DELETE /signout```
+
+Used to log a user out, deleting their token. Expects a request header with a
+valid token.
+
+(4) ```PATCH /edit-profile```
+
+Updates an existing user acccount. Expects a request body that is a FormData object, with ```email```, ```password```, ```password_confirmation```, and ```zip_code``` as required entries and ```image``` as an optional one.
+
+*CLIENT Routes*
+
+(1) ```POST /clients```
+
+Creates a new client account. Expects a request body with ```{ client: { about: <string> } }``` and a header with a valid token.
+
+(2) ```PATCH /clients/:id```
+
+Updates an existing client account. Expects a request body with ```{ client: { about: <string> } }``` and a header with a valid token.
+
+*SITTER Routes*
+
+(1) ```GET /sitters```
+
+Gets the info for all existing sitter accounts. Expects a request header with a
+valid token.
+
+(2) ```POST /sitters```
+
+Creates a new sitter account. Expects a request body with ```{ sitter: { name: <string>, about: <string>, price: <integer>, service_range: <integer>, animal_types: <string> } }```, as well as a header with a valid token.
+
+(3) ```PATCH /sitters/:id```
+
+Updates an existing client account. Expects a request body with ```{ sitter: { name: <string>, about: <string>, price: <integer>, service_range: <integer>, animal_types: <string> } }```, where all of the fields are optional, as well as a header with a valid token.
+
+*FAVORITE Routes*
+
+(1) ```GET /favorites```
+
+Returns existing favorites from the server. The request header must contain a valid token.
+
+(2) ```POST /favorites```
+
+Creates a new favorite. Expects a request body of the format ```{ favorite: {
+client_id: <existing client_id>, sitter_id: <existing sitter_id> } }```, as well as a request header with valid token.
+
+(3) ```DELETE /favorites/:id```
+
+Deletes an existing favorite. Requires a request header with avalid token.
 ## Process Info ##
 
 ### Strategy ###
