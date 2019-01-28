@@ -22,7 +22,7 @@ class UsersController < ProtectedController
     creds = sign_in_creds
     if (user = User.authenticate creds[:email],
                                  creds[:password])
-      render json: user, serializer: UserLoginSerializer, root: 'user', include: '*.*'
+      render json: user, serializer: UserLoginSerializer, root: 'user', include: '*.*, favorites'
     else
       head :unauthorized
     end

@@ -9,7 +9,7 @@
 # Read more: https://github.com/cyu/rack-cors
 
 if Rails.env.development?
-  development_client_origin = "https://shawnfraistat.github.io/"
+  development_client_origin = "http://localhost:7165"
 end
 
 development_client_origin ||= ENV['CLIENT_ORIGIN']
