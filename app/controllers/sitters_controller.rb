@@ -48,6 +48,6 @@ class SittersController < ProtectedController
 
     # Only allow a trusted parameter "white list" through.
     def sitter_params
-      params.require(:sitter).permit(:about, :price, :service_range, :user_id, :animal_types, :services_provided, :favorites, :name)
+      params.require(:sitter).permit(:about, :price, :service_range, :user_id, :animal_types, :services_provided, :favorites)
     end
 end

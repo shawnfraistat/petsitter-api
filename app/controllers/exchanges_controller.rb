@@ -4,12 +4,12 @@ class ExchangesController < ApplicationController
   # GET /exchanges
   def index
     @exchanges = Exchange.all
-    render json: @exchanges, include: '*.*'
+    render json: @exchanges, include: '*.*, sitter, client, user'
   end
 
   # GET /exchanges/1
   def show
-    render json: @exchange
+    render json: @exchange, include: '*.*, sitter, client, user'
   end
 
   # POST /exchanges

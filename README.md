@@ -2,10 +2,13 @@
 
 ## Description ##
 
-petsitter.io is a fullstack web application that allows users to search for and contact pet sitters. It also allows pet sitters to sign up and make their information available to clients. Clients may search for pet sitters by
-pet type, location, and price. The distance between client and sitter is
-determined by a third party zip code API, enabling the app to accurately
-estimate how many miles they are away from each other. If clients find sitters they are interested in, they may contact them via e-mail.
+petsitter.io is a fullstack web application that allows users to search for and
+contact pet sitters. It also allows pet sitters to sign up and make their
+information available to clients. Clients may search for pet sitters by pet
+type, location, and price. The distance between client and sitter is determined
+by a third party zip code API, enabling the app to accurately estimate how many
+miles they are away from each other. If clients find sitters they are interested
+in, they may message them using the site's message system.
 
 ### Links ###
 
@@ -150,11 +153,10 @@ that the app was working as I intended and met MVP goals, I began implementing a
 
 ### Future Goals and Unsolved Problems ####
 
-1. Add ability to for sitters to define availability, and clients to search by date range.
-2. Add ability for clients and sitters to "match" and chat.
+1. Add ability to for sitters to define availability, and clients to search by
+date range.
+2. Add ability for clients to create substantial profiles. (Pics of pets,  etc.)
 3. Add ability for sitters to view profiles of clients who request them.
-4. Add ability for clients to create substantial profiles. (Pics of pets,  etc.)
-5. As corollary of goal #4, add pets as a separate resource.
-6. Add ability for clients to review sitters.
-7. Refactor React logic.
-8. Adjust styling problems with footer.
+4. As corollary of goal #2, add pets as a separate resource.
+5. Add ability for clients to review sitters.
+6. Refactor React logic.
